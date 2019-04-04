@@ -128,6 +128,26 @@ void loop() {
       state27();
       checkButtons(&state);
       break;
+    case 29:
+      //State 29:
+      state29();
+      checkButtons(&state);
+      break;
+    case 33:
+      //State 33:
+      state33();
+      checkButtons(&state);
+      break;
+    case 34:
+      //State 34:
+      state34();
+      checkButtons(&state);
+      break;
+    case 35:
+      //State 35:
+      state35();
+      checkButtons(&state);
+      break;
   }
 }
 
@@ -292,6 +312,18 @@ byte leftButtonPressed(byte state){
     case 27:
       state = 25;
       break;
+    case 29:
+      //state = ;
+      break;
+    case 33:
+      state = 34;
+      break;
+    case 34:
+      state = 35;
+      break;
+    case 35:
+      state = 33;
+      break;
       
   }
 
@@ -365,6 +397,18 @@ byte leftButtonHeld(byte state){
     case 27:
       //state = ;
       break;
+    case 29:
+      //state = ;
+      break;
+    case 33:
+      //state = ;
+      break;
+    case 34:
+      //state = ;
+      break;
+    case 35:
+      //state = ;
+      break;
   }
 
   return state;
@@ -423,7 +467,7 @@ byte middleButtonPressed(byte state){
       state = 25;
       break;
     case 21:
-      //state = ;
+      state = 29;
       break;
     case 22:
       //state = ;
@@ -435,6 +479,18 @@ byte middleButtonPressed(byte state){
       //state = ;
       break;
     case 27: // sub from blue intensity %
+      //state = ;
+      break;
+    case 29: // set minimum moisture amount
+      //state = ;
+      break;
+    case 33: // sub from water amount in mL
+      //state = ;
+      break;
+    case 34: // sub from water delay in minutes
+      //state = ;
+      break;
+    case 35: // sub from water moisture % threshold
       //state = ;
       break;
       
@@ -510,6 +566,18 @@ byte middleButtonHeld(byte state){
     case 27:
       state = 20;
       break;
+    case 29:
+      state = 21;
+      break;
+    case 33:
+      state = 22;
+      break;
+    case 34:
+      state = 22;
+      break;
+    case 35:
+      state = 22;
+      break;
   }
 
   return state;
@@ -580,6 +648,18 @@ byte rightButtonPressed(byte state){
       //state = ;
       break;
     case 27: // Add to blue intensity %
+      //state = ;
+      break;
+    case 29: // Set maximum soil moisture reading
+      //state = ;
+      break;
+    case 33: // Add to water amount in mL
+      //state = ;
+      break;
+    case 34: // Add to water delay in minutes
+      //state = ;
+      break;
+    case 35: // Add to moisture % threshold
       //state = ;
       break;
       
@@ -653,6 +733,18 @@ byte rightButtonHeld(byte state){
       //state = ;
       break;
     case 27:
+      //state = ;
+      break;
+    case 29:
+      //state = ;
+      break;
+    case 33:
+      //state = ;
+      break;
+    case 34:
+      //state = ;
+      break;
+    case 35:
       //state = ;
       break;
       
@@ -1224,7 +1316,7 @@ void state25(){
         screen.clearDisplay();
   
         screen.setCursor(0, 0);
-        screen.print("[../Light Settings]");
+        screen.print("[/Light Settings]");
 
         screen.drawLine(0, 8, 128, 8, WHITE);
 
@@ -1277,7 +1369,7 @@ void state26(){
         screen.clearDisplay();
   
         screen.setCursor(0, 0);
-        screen.print("[../Light Settings]");
+        screen.print("[/Light Settings]");
 
         screen.drawLine(0, 8, 128, 8, WHITE);
 
@@ -1330,7 +1422,7 @@ void state27(){
         screen.clearDisplay();
   
         screen.setCursor(0, 0);
-        screen.print("[../Light Settings]");
+        screen.print("[/Light Settings]");
 
         screen.drawLine(0, 8, 128, 8, WHITE);
 
@@ -1348,6 +1440,219 @@ void state27(){
         screen.setTextColor(BLACK, WHITE);
         screen.setCursor(0, 32);
         screen.print("BLUE %:");
+        screen.setTextColor(WHITE, BLACK);
+        
+        // Draw values
+        screen.setCursor(98, 12);
+        screen.print("VAL");
+
+        screen.setCursor(98, 22);
+        screen.print("VAL");
+
+        screen.setCursor(98, 32);
+        screen.print("VAL");
+
+        //screen.setCursor(0, 42);
+        //screen.print("Option 4");
+
+        // draw options menu on bottom
+        screen.drawLine(0, 50, 128, 50, WHITE);
+        
+        screen.drawRect(45, 53, 38, 11, WHITE);
+        screen.setCursor(50, 55);
+        screen.print(" SUB ");
+
+        screen.drawRect(89, 53, 38, 11, WHITE);
+        screen.setCursor(94, 55);
+        screen.print(" ADD ");
+        
+        screen.fillTriangle(5, 54, 13, 54, 9, 62, WHITE);
+
+        screen.display();
+}
+
+void state29(){
+        screen.clearDisplay();
+  
+        screen.setCursor(0, 0);
+        screen.print("[/Moisture Settings]");
+
+        screen.drawLine(0, 8, 128, 8, WHITE);
+
+        // Draw arrows (86, 122), y value changes
+        //screen.drawTriangle(87, 15, 92, 12, 92, 18, WHITE);
+        //screen.drawTriangle(127, 15, 122, 12, 122, 18, WHITE);
+        
+        // Draw labels
+        //screen.setTextColor(BLACK, WHITE);
+        screen.setCursor(0, 12);
+        screen.print("Current Val:");
+        //screen.setTextColor(WHITE, BLACK);
+
+        screen.setCursor(0, 22);
+        screen.print("Max Val:");
+
+        screen.setCursor(0, 32);
+        screen.print("Min Val:");
+
+        // Draw values
+        screen.setCursor(98, 12);
+        //screen.print("VAL");
+        screen.print(analogRead(0));
+
+        screen.setCursor(98, 22);
+        screen.print("VAL");
+
+        screen.setCursor(98, 32);
+        screen.print("VAL");
+
+        //screen.setCursor(0, 42);
+        //screen.print("Option 4");
+
+        // draw options menu on bottom
+        screen.drawLine(0, 50, 128, 50, WHITE);
+        
+        screen.drawRect(45, 53, 38, 11, WHITE);
+        screen.setCursor(50, 55);
+        screen.print("->Min");
+
+        screen.drawRect(89, 53, 38, 11, WHITE);
+        screen.setCursor(94, 55);
+        screen.print("->Max");
+        
+        //screen.fillTriangle(5, 54, 13, 54, 9, 62, WHITE);
+
+        screen.display();
+}
+
+void state33(){
+        screen.clearDisplay();
+  
+        screen.setCursor(0, 0);
+        screen.print("[/Water Settings]");
+
+        screen.drawLine(0, 8, 128, 8, WHITE);
+
+        // Draw arrows (86, 122), y value changes
+        screen.drawTriangle(87, 15, 92, 12, 92, 18, WHITE);
+        screen.drawTriangle(127, 15, 122, 12, 122, 18, WHITE);
+        
+        // Draw labels
+        screen.setTextColor(BLACK, WHITE);
+        screen.setCursor(0, 12);
+        screen.print("Water (mL):");
+        screen.setTextColor(WHITE, BLACK);
+
+        screen.setCursor(0, 22);
+        screen.print("Delay (min):");
+
+        screen.setCursor(0, 32);
+        screen.print("Moisture %:");
+
+        // Draw values
+        screen.setCursor(98, 12);
+        screen.print("VAL");
+
+        screen.setCursor(98, 22);
+        screen.print("VAL");
+
+        screen.setCursor(98, 32);
+        screen.print("VAL");
+
+        //screen.setCursor(0, 42);
+        //screen.print("Option 4");
+
+        // draw options menu on bottom
+        screen.drawLine(0, 50, 128, 50, WHITE);
+        
+        screen.drawRect(45, 53, 38, 11, WHITE);
+        screen.setCursor(50, 55);
+        screen.print(" SUB ");
+
+        screen.drawRect(89, 53, 38, 11, WHITE);
+        screen.setCursor(94, 55);
+        screen.print(" ADD ");
+        
+        screen.fillTriangle(5, 54, 13, 54, 9, 62, WHITE);
+
+        screen.display();
+}
+
+void state34(){
+        screen.clearDisplay();
+  
+        screen.setCursor(0, 0);
+        screen.print("[/Water Settings]");
+
+        screen.drawLine(0, 8, 128, 8, WHITE);
+
+        // Draw arrows (86, 122), y value changes
+        screen.drawTriangle(87, 25, 92, 22, 92, 28, WHITE);
+        screen.drawTriangle(127, 25, 122, 22, 122, 28, WHITE);
+        
+        // Draw labels
+        screen.setCursor(0, 12);
+        screen.print("Water (mL):");
+
+        screen.setTextColor(BLACK, WHITE);
+        screen.setCursor(0, 22);
+        screen.print("Delay (min):");
+        screen.setTextColor(WHITE, BLACK);
+        
+        screen.setCursor(0, 32);
+        screen.print("Moisture %:");
+
+        // Draw values
+        screen.setCursor(98, 12);
+        screen.print("VAL");
+
+        screen.setCursor(98, 22);
+        screen.print("VAL");
+
+        screen.setCursor(98, 32);
+        screen.print("VAL");
+
+        //screen.setCursor(0, 42);
+        //screen.print("Option 4");
+
+        // draw options menu on bottom
+        screen.drawLine(0, 50, 128, 50, WHITE);
+        
+        screen.drawRect(45, 53, 38, 11, WHITE);
+        screen.setCursor(50, 55);
+        screen.print(" SUB ");
+
+        screen.drawRect(89, 53, 38, 11, WHITE);
+        screen.setCursor(94, 55);
+        screen.print(" ADD ");
+        
+        screen.fillTriangle(5, 54, 13, 54, 9, 62, WHITE);
+
+        screen.display();
+}
+
+void state35(){
+        screen.clearDisplay();
+  
+        screen.setCursor(0, 0);
+        screen.print("[/Water Settings]");
+
+        screen.drawLine(0, 8, 128, 8, WHITE);
+
+        // Draw arrows (86, 122), y value changes
+        screen.drawTriangle(87, 35, 92, 32, 92, 38, WHITE);
+        screen.drawTriangle(127, 35, 122, 32, 122, 38, WHITE);
+        
+        // Draw labels
+        screen.setCursor(0, 12);
+        screen.print("Water (mL):");
+
+        screen.setCursor(0, 22);
+        screen.print("Delay (min):");
+
+        screen.setTextColor(BLACK, WHITE);
+        screen.setCursor(0, 32);
+        screen.print("Moisture %:");
         screen.setTextColor(WHITE, BLACK);
         
         // Draw values
